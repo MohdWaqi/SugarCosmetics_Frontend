@@ -31,7 +31,7 @@ import MenuBar from "./MenuBar";
 
 const Navbar = () => {
   return (
-    <Box bg="black">
+    <Box bg="black" position="fixed" w="100vw" zIndex={2}>
       <Flex h="10vh" alignItems="center" mx="2%">
         <Img w="22%" h="10vh" src={logo} />
         <InputGroup w="47%" mx="2%" _focus={{ outline: 0 }}>

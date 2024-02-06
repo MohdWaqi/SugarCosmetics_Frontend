@@ -14,7 +14,7 @@ const MenuSection = ({ detailData }) => {
             </Text>
             <UnorderedList fontSize="small" color="gray" spacing="5%" mt="5%">
               {data.list?.length &&
-                data.list.map((item) => <MenuSingleItem item={item} />)}
+                data.list.map((item, index) => <MenuSingleItem key={index} item={item} />)}
             </UnorderedList>
           </Box>
         ))}

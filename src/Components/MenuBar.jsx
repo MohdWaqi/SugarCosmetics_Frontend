@@ -43,8 +43,6 @@ const MenuBar = ({ menuTitle, menuDetails }) => {
             menuDetails.map((detail, index) => (
               <MenuSection key={index} detailData={detail} />
             ))}
-          <Box></Box>
-          <Box></Box>
         </Box>
       )}
     </Box>
