@@ -1,0 +1,331 @@
+[
+    {
+        "name": "LIPS",
+        "data": [
+            [
+                {
+                    "product": "LIPSTICKS",
+                    "list": [
+                        "TRANSFER PROOF LIPSTICKS",
+                        "MATTE LIPSTICKS",
+                        "LIQUID LIPSTICKS",
+                        "CRAYON LIPSTICKS",
+                        "POWDER LIPSTICKS",
+                        "SATIN LIPSTICKS",
+                        "BULLET LIPSTICKS",
+                        "LIP GLOSS & LINERS"
+                    ]
+                },
+                {
+                    "product": "LIP CARE",
+                    "list": [
+                        "LIPSTICK FIXERS & REMOVERS",
+                        "LIP PRIMERS & SCRUBS",
+                        "LIP BALMS"
+                    ]
+                },
+                {
+                    "product": "LIPSTICK SETS & COMBOS",
+                    "list": [
+                        "LIPSTICK SETS",
+                        "LIPSTICKS COMBOS",
+                        "MOHD WAQI PERVEZ"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "name": "EYES",
+        "data": [
+            [
+                {
+                    "product": "KOHL & KAJAL",
+                    "list": [
+                        "KOHLS",
+                        "KAJALS",
+                        "MOHD WAQI PERVEZ"
+                    ]
+                },
+                {
+                    "product": "EYELINER",
+                    "list": [
+                        "LIQUID EYELINERS",
+                        "GEL EYELINERS",
+                        "PEN EYELINERS",
+                        "MAGNETIC EYELASHES"
+                    ]
+                },
+                {
+                    "product": "EYEBROW",
+                    "list": [
+                        "BROW DEFINER",
+                        "BROW PEN",
+                        "BROW PENCIL",
+                        "MAGNETIC EYELASHES"
+                    ]
+                }
+            ],
+            [
+                {
+                    "product": "MASCARA",
+                    "list": [
+                        "VOLUMIZING MASCARA",
+                        "CURL LENGTHENING MASCARA"
+                    ]
+                },
+                {
+                    "product": "EYESHADOWS",
+                    "list": [
+                        "EYESHADOW PALETTES",
+                        "JELLY EYESHADOW",
+                        "LIQUID EYESHADOW"
+                    ]
+                },
+                {
+                    "product": "EYE VALUE SETS"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "FACE",
+        "data": [
+            [
+                {
+                    "product": "FOUNDATION & BB CREAM",
+                    "list": [
+                        "STICK FOUNDATION",
+                        "LIQUID FOUNDATION",
+                        "BB CREAM"
+                    ]
+                },
+                {
+                    "product": "PALETTES",
+                    "list": [
+                        "MOHD WAQI PERVEZ"
+                    ]
+                },
+                {
+                    "product": "PRIMER",
+                    "list": [
+                        "TRANSLUCENT PRIMERS",
+                        "TINTED PRIMERS"
+                    ]
+                }
+            ],
+            [
+                {
+                    "product": "COMPACT & FIXERS",
+                    "list": [
+                        "SETTING SPRAYS",
+                        "LOOSE POWDER",
+                        "COMPACT"
+                    ]
+                },
+                {
+                    "product": "CONCEALERS & CORRECTORS",
+                    "list": [
+                        "COLOUR CORRECTORS",
+                        "CONCEALER"
+                    ]
+                },
+                {
+                    "product": "HIGHLIGHTERS"
+                }
+            ],
+            [
+                {
+                    "product": "BLUSH"
+                },
+                {
+                    "product": "BRONZER & CONTOUR"
+                },
+                {
+                    "product": "FACE SETS & COMBOS"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "NAILS"
+    },
+    {
+        "name": "SKINCARE",
+        "data": [
+            [
+                {
+                    "product": "MOISTURIZERS & SUNSCREENS",
+                    "list": [
+                        "MOISTURIZERS",
+                        "SUNSCREENS"
+                    ]
+                },
+                {
+                    "product": "MASKS & SERUMS",
+                    "list": [
+                        "MASKS",
+                        "SERUMS"
+                    ]
+                },
+                {
+                    "product": "CLEANSERS & EXFOLIATORS",
+                    "list": [
+                        "CLEANSERS",
+                        "EXFOLIATORS"
+                    ]
+                }
+            ],
+            [
+                {
+                    "product": "MISTS & HYDRATING STICKS",
+                    "list": [
+                        "FACE MISTS",
+                        "COOLING STICKS"
+                    ]
+                },
+                {
+                    "product": "LIP & EYE CARE"
+                },
+                {
+                    "product": "SKINCARE SETS & COMBOS"
+                }
+            ],
+            [
+                {
+                    "product": "SKINCARE RANGES",
+                    "list": [
+                        "AQUAHOLIC",
+                        "COFFEE CULTURE",
+                        "CITRUS GOT REAL"
+                    ]
+                },
+                {
+                    "product": "DEVELOPED BY"
+                },
+                {
+                    "product": "MOHD WAQI PERVEZ"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "ACCESSORIES",
+        "data": [
+            [
+                {
+                    "product": "BRUSHES",
+                    "list": [
+                        "FACE BRUSHES",
+                        "EYE BRUSHES"
+                    ]
+                }
+            ],
+            [
+                {
+                    "product": "MAKEUP TOOLS"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "GIFTS & KITS",
+        "data": [
+            [
+                {
+                    "product": "LIPSTICK SETS"
+                },
+                {
+                    "product": "MAKEUP KITS"
+                },
+                {
+                    "product": "SKINCARE SETS"
+                }
+            ],
+            [
+                {
+                    "product": "SUGAR MERCH"
+                },
+                {
+                    "product": "CORPORATE GIFTING"
+                },
+                {
+                    "product": "E-GIFT CARD"
+                }
+            ],
+            [
+                {
+                    "product": "VALUE SETS"
+                },
+                {
+                    "product": "SUGAR SETS"
+                },
+                {
+                    "product": "MOHD WAQI PERVEZ"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "BESTSELLERS"
+    },
+    {
+        "name": "NEW LAUNCHES"
+    },
+    {
+        "name": "OFFERS"
+    },
+    {
+        "name": "BLOG",
+        "data": [
+            [
+                {
+                    "product": "MAKEUP",
+                    "list": [
+                        "FACE",
+                        "EYES",
+                        "LIPS",
+                        "BRIDES",
+                        "NAILS",
+                        "HOW TO'S"
+                    ]
+                },
+                {
+                    "product": "SKIN",
+                    "list": [
+                        "SKIN TYPE",
+                        "SKIN CONCERNS",
+                        "HOME REMEDIES & DIYs"
+                    ]
+                },
+                {
+                    "product": "HAIR",
+                    "list": [
+                        "HAIR CARE",
+                        "HAIR STYLING",
+                        "HAIR COLOUR"
+                    ]
+                }
+            ],
+            [
+                {
+                    "product": "LIFESTYLE",
+                    "list": [
+                        "HEALTH & WELLNESS",
+                        "RELATIONSHIPS"
+                    ]
+                },
+                {
+                    "product": "FASHION",
+                    "list": [
+                        "TRENDS",
+                        "CELEBRITIES"
+                    ]
+                },
+                {
+                    "product": "MOHD WAQI PERVEZ"
+                }
+            ]
+        ]
+    }
+]
