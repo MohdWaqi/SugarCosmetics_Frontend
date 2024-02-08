@@ -38,6 +38,7 @@ const MenuBar = ({ menuTitle, menuDetails }) => {
           left={menuTitle === "GIFTS & KITS" && "-200%"}
           cursor="pointer"
           borderRadius="0 0 10px 10px"
+          boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px"
         >
           {menuDetails?.length &&
             menuDetails.map((detail, index) => (

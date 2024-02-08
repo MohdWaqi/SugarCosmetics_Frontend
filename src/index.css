@@ -1,3 +1,16 @@
 *{
   margin: 0px;
 }
+.carousel img.carouselImg{
+  width:55%;
+  border-radius:10px;
+  margin-top:1%;
+  margin-bottom:2%
+}
+.carousel img.priceImg{
+  width:15%
+}
+.carousel img.tag{
+  width:21.5%;
+  left:0
+}
