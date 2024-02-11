@@ -13,7 +13,6 @@ import {
   InputRightElement,
   Text,
 } from "@chakra-ui/react";
-import stayTouch from "../assets/touch.svg"
 import refer from "../assets/refer.jpg";
 import carouselImg1 from "../assets/1.jpg";
 import carouselImg2 from "../assets/2.jpg";
@@ -32,6 +31,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import ProductCarousel from "../Components/ProductCarousel";
+import Footer from "../Components/Footer";
+
 
 const Home = () => {
   const [homeData, setHomeData] = useState({});
@@ -324,70 +325,112 @@ const Home = () => {
           ],
         ],
       },
-      merch:{name:"MERCH STATION", data:[[{
-        "image": "https://i.postimg.cc/pL9B6904/just7.jpg",
-        "title": "Opulent Orchid Lipstick",
-        "price": 1199.99,
-        "discountPrice": 832,
-        "description": "Adorn your lips with our Opulent Orchid Lipstick. Luxurious formula infused with orchid extract for hydration.",
-        "shades": ["Orchid Petal", "Blossom Pink", "Magenta Majesty", "Velvet Violet"]
+      merch: {
+        name: "MERCH STATION",
+        data: [
+          [
+            {
+              image: "https://i.postimg.cc/pL9B6904/just7.jpg",
+              title: "Opulent Orchid Lipstick",
+              price: 1199.99,
+              discountPrice: 832,
+              description:
+                "Adorn your lips with our Opulent Orchid Lipstick. Luxurious formula infused with orchid extract for hydration.",
+              shades: [
+                "Orchid Petal",
+                "Blossom Pink",
+                "Magenta Majesty",
+                "Velvet Violet",
+              ],
+            },
+            {
+              image: "https://i.postimg.cc/D08WwGbK/just8.jpg",
+              title: "Radiant Diamond Highlighter",
+              price: 1099.99,
+              discountPrice: 690,
+              description:
+                "Illuminate your complexion with our Radiant Diamond Highlighter. Infused with diamond powder for a dazzling glow.",
+              shades: ["Crystal", "Champagne", "Rose Gold", "Opal"],
+            },
+            {
+              image: "https://i.postimg.cc/9QGD0Czz/extra1.jpg",
+              title: "Enchanted Elixir Serum",
+              price: 1199.99,
+              discountPrice: 983,
+              description:
+                "Transform your skin with our Enchanted Elixir Serum. Formulated with rare botanical extracts for youthful radiance.",
+              shades: ["Ethereal", "Mystic", "Enchantment", "Sorcery"],
+            },
+            {
+              image: "https://i.postimg.cc/26BypYpz/extra2.jpg",
+              title: "Glowing Goddess Bronzer",
+              price: 1099.99,
+              discountPrice: 849,
+              description:
+                "Achieve a sun-kissed glow with our Glowing Goddess Bronzer. Infused with luminous pigments for a radiant complexion.",
+              shades: [
+                "Golden Goddess",
+                "Bronze Divinity",
+                "Sunlit Siren",
+                "Copper Queen",
+              ],
+            },
+          ],
+          [
+            {
+              image: "https://i.postimg.cc/50xgnf6R/extra3.jpg",
+              title: "Velvet Veil Primer",
+              price: 1199.99,
+              discountPrice: 786,
+              description:
+                "Create a smooth canvas for makeup with our Velvet Veil Primer. Blurs imperfections and extends makeup wear.",
+              shades: [
+                "Transparent",
+                "Illuminating",
+                "Mattifying",
+                "Hydrating",
+              ],
+            },
+            {
+              image: "https://i.postimg.cc/13hpvydr/extra4.jpg",
+              title: "Radiant Ruby Lipstick",
+              price: 1099.99,
+              discountPrice: 694,
+              description:
+                "Adorn your lips with our Radiant Ruby Lipstick. Intensely pigmented formula for bold, long-lasting color.",
+              shades: [
+                "Ruby Red",
+                "Garnet Glam",
+                "Scarlet Sizzle",
+                "Crimson Crush",
+              ],
+            },
+            {
+              image: "https://i.postimg.cc/cLSFr7dW/extra5.jpg",
+              title: "Diamond Dust Eyeshadow Palette",
+              price: 1299.99,
+              discountPrice: 475,
+              description:
+                "Create mesmerizing eye looks with our Diamond Dust Eyeshadow Palette. Features a stunning array of shimmering shades.",
+              shades: [
+                "Diamond Dust",
+                "Crystal Glitter",
+                "Opulent Pearl",
+                "Radiant Rose",
+              ],
+            },
+            {
+              image: "https://i.postimg.cc/255FZ2Js/extra6.jpg",
+              title: "Golden Goddess Highlighter",
+              price: 1099.99,
+              discountPrice: 799,
+              description:
+                "Illuminate your features with our Golden Goddess Highlighter. Infused with gold flecks for a radiant glow.",
+              shades: ["Golden Glow", "Champagne", "Sunlit", "Bronze Goddess"],
+            },
+          ],
+        ],
       },
-    {
-        "image": "https://i.postimg.cc/D08WwGbK/just8.jpg",
-        "title": "Radiant Diamond Highlighter",
-        "price": 1099.99,
-        "discountPrice": 690,
-        "description": "Illuminate your complexion with our Radiant Diamond Highlighter. Infused with diamond powder for a dazzling glow.",
-        "shades": ["Crystal", "Champagne", "Rose Gold", "Opal"]
-      },
-      {
-        "image": "https://i.postimg.cc/9QGD0Czz/extra1.jpg",
-        "title": "Enchanted Elixir Serum",
-        "price": 1199.99,
-        "discountPrice": 983,
-        "description": "Transform your skin with our Enchanted Elixir Serum. Formulated with rare botanical extracts for youthful radiance.",
-        "shades": ["Ethereal", "Mystic", "Enchantment", "Sorcery"]
-      },
-      {
-        "image": "https://i.postimg.cc/26BypYpz/extra2.jpg",
-        "title": "Glowing Goddess Bronzer",
-        "price": 1099.99,
-        "discountPrice": 849,
-        "description": "Achieve a sun-kissed glow with our Glowing Goddess Bronzer. Infused with luminous pigments for a radiant complexion.",
-        "shades": ["Golden Goddess", "Bronze Divinity", "Sunlit Siren", "Copper Queen"]
-      }],
-      [{
-        "image": "https://i.postimg.cc/50xgnf6R/extra3.jpg",
-        "title": "Velvet Veil Primer",
-        "price": 1199.99,
-        "discountPrice": 786,
-        "description": "Create a smooth canvas for makeup with our Velvet Veil Primer. Blurs imperfections and extends makeup wear.",
-        "shades": ["Transparent", "Illuminating", "Mattifying", "Hydrating"]
-      },
-      {
-        "image": "https://i.postimg.cc/13hpvydr/extra4.jpg",
-        "title": "Radiant Ruby Lipstick",
-        "price": 1099.99,
-        "discountPrice": 694,
-        "description": "Adorn your lips with our Radiant Ruby Lipstick. Intensely pigmented formula for bold, long-lasting color.",
-        "shades": ["Ruby Red", "Garnet Glam", "Scarlet Sizzle", "Crimson Crush"]
-      },
-      {
-        "image": "https://i.postimg.cc/cLSFr7dW/extra5.jpg",
-        "title": "Diamond Dust Eyeshadow Palette",
-        "price": 1299.99,
-        "discountPrice": 475,
-        "description": "Create mesmerizing eye looks with our Diamond Dust Eyeshadow Palette. Features a stunning array of shimmering shades.",
-        "shades": ["Diamond Dust", "Crystal Glitter", "Opulent Pearl", "Radiant Rose"]
-      },
-      {
-        "image": "https://i.postimg.cc/255FZ2Js/extra6.jpg",
-        "title": "Golden Goddess Highlighter",
-        "price": 1099.99,
-        "discountPrice": 799,
-        "description": "Illuminate your features with our Golden Goddess Highlighter. Infused with gold flecks for a radiant glow.",
-        "shades": ["Golden Glow", "Champagne", "Sunlit", "Bronze Goddess"]
-      }]]}
     });
   }, []);
   return (
@@ -454,26 +497,7 @@ const Home = () => {
         </Box>
         <ProductCarousel dark={false} products={homeData.merch} best={false} />
       </Box>
-      <Box textAlign="center" backgroundImage={`url(${stayTouch})`} backgroundSize="cover" p="5%">
-            <CustomHeading title="LET'S STAY IN TOUCH"/>
-            <Text mt="-1%">Get the latest beauty tips straight to your inbox. Can't wait to connect!</Text>
-            <InputGroup w="47%" m="auto" mt="2%" _focus={{ outline: 0 }}>
-          <Input
-            borderRadius="10px"
-            type="text"
-            bg="white"
-            border="1px solid black"
-            _hover={{}}
-            color="white"
-            placeholder='Enter Email'
-          />
-          <InputRightElement w="17%" display="flex" alignItems="center">
-            <Button w="100%" borderRadius="0 10px 10px 0" bg="black" color="white">
-              SUBSCRIBE
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </Box>
+      <Footer/>
     </>
   );
 };
