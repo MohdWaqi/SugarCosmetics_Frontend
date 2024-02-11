@@ -1,0 +1,115 @@
+[
+    {
+        "name": "Category",
+        "data": [
+            "Mascara",
+            "Eyeliner",
+            "Eyeshadow",
+            "Eyebrow",
+            "Face Palette"
+        ]
+    },
+    {
+        "name": "Price",
+        "data": [
+            "₹0 - ₹299",
+            "₹300 - ₹499",
+            "₹500 - ₹899",
+            "₹900+"
+        ]
+    },
+    {
+        "name": "Discount",
+        "data": [
+            "10% and Above",
+            "20% and Above",
+            "30% and Above",
+            "40% and Above"
+        ]
+    },
+    {
+        "name": "Colour",
+        "data": [
+            "Black",
+            "Brown",
+            "White"
+        ]
+    },
+    {
+        "name": "Finish",
+        "data": [
+            "Natural",
+            "Matte"
+        ]
+    },
+    {
+        "name": "Skin Tone",
+        "data": [
+            "Light/Fair",
+            "Medium",
+            "Deep"
+        ]
+    },
+    {
+        "name": "Formulation",
+        "data": [
+            "Liquid",
+            "Powder",
+            "Gel",
+            "Pen"
+        ]
+    },
+    {
+        "name": "Ease of Use",
+        "data": [
+            "Advanced",
+            "Beginner"
+        ]
+    },
+    {
+        "name": "Benefits",
+        "data": [
+            "Long-Lasting",
+            "Vegan",
+            "Water Resistant",
+            "Smudge-Proof",
+            "Long Lasting",
+            "Transfer-Proof",
+            "Vegetarian",
+            "Cruelty-Free"
+        ]
+    },
+    {
+        "name": "Pack Size",
+        "data": [
+            "Single",
+            "Sets"
+        ]
+    },
+    {
+        "name": "Skin Types",
+        "data": [
+            "All Skin Types"
+        ]
+    },
+    {
+        "name": "Claims",
+        "data": [
+            "Vegan",
+            "Smudge-Proof",
+            "Cruelty Free",
+            "Transfer-Proof",
+            "Vegetarian"
+        ]
+    },
+    {
+        "name": "Occasion/Mood",
+        "data": [
+            "Daily",
+            "Everyday",
+            "Festive",
+            "Office",
+            "Party"
+        ]
+    }
+]

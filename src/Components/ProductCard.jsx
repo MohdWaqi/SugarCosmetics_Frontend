@@ -9,13 +9,14 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
     <Box
       position="relative"
       bg="white"
-      w="300px"
+      w="90%"
       borderRadius="10px"
       cursor="pointer"
       boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+
     >
       {best &&<Image position="absolute" className="tag" src={bestSellerIcon} />}
-      <Image className="carouselImg" h="200px" src={productImage} />
+      <Image className="carouselImg" h="200px" m="auto" borderRadius="10px" pt="1%" src={productImage} />
       <Text px="15%" fontSize={"0.85rem"}>
         {productName}
       </Text>
@@ -39,7 +40,7 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
           p="7% 15%"
           _hover={{ backgroundColor: "black" }}
         >
-          SELECT SHADE
+          ADD TO BAG
         </Button>
       </Flex>
     </Box>

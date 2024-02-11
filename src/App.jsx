@@ -1,11 +1,12 @@
 import './App.css'
+import AllProducts from './Pages/AllProducts'
 import Home from './Pages/Home'
 
 function App() {
   return (
     <>
-      <Home/>
-      
+      <AllProducts/>
+      {/* <Home /> */}
     </>
   )
 }

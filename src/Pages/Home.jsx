@@ -2,15 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import {
   Box,
-  Button,
-  Divider,
   Flex,
-  Heading,
   Image,
-  Img,
-  Input,
-  InputGroup,
-  InputRightElement,
   Text,
 } from "@chakra-ui/react";
 import refer from "../assets/refer.jpg";
@@ -26,10 +19,7 @@ import clubIcon from "../assets/10009.svg";
 import background from "../assets/10046.png";
 import BannerCarousel from "../Components/BannerCarousel";
 import CustomHeading from "../Components/CustomHeading";
-
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import ProductCarousel from "../Components/ProductCarousel";
 import Footer from "../Components/Footer";
 
