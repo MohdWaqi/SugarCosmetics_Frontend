@@ -4,7 +4,7 @@ import priceIcon from "../assets/10013.svg"
 import like from "../assets/10014.svg"
 import bestSellerIcon from "../assets/10015.svg"
 
-const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice}) => {
+const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice, best}) => {
   return (
     <Box
       position="relative"
@@ -12,9 +12,10 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
       w="300px"
       borderRadius="10px"
       cursor="pointer"
+      boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px"
     >
-      <Image position="absolute" className="tag" src={bestSellerIcon} />
-      <Image className="carouselImg" src={productImage} />
+      {best &&<Image position="absolute" className="tag" src={bestSellerIcon} />}
+      <Image className="carouselImg" h="200px" src={productImage} />
       <Text px="15%" fontSize={"0.85rem"}>
         {productName}
       </Text>
