@@ -1,5 +1,6 @@
 import './App.css'
 import AllProducts from './Pages/AllProducts'
+import Bag from './Pages/Bag'
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
@@ -12,7 +13,8 @@ function App() {
       {/* <Home /> */}
       {/* <SingleProduct/> */}
       {/* <Login/> */}
-      <Register/>
+      {/* <Register/> */}
+      <Bag/>
     </>
   )
 }

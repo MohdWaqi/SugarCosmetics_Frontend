@@ -10,7 +10,7 @@ import background2 from "../assets/10047.jpeg";
 const ProductCarousel = ({dark, products, best }) => {
     const [hover, setHover] = useState(false)
   return (
-    <Box backgroundImage={dark &&`url(${background2})`} bg={!dark&&"#FBFBFB"} mb="5%" py="3%" gap="2%" onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
+    <Box backgroundImage={dark &&`url(${background2})`} bg={!dark&&"#FBFBFB"} py="3%" gap="2%" onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
           <CustomHeading title={products?.name} black={dark} />
           <Carousel
             transitionTime={1}
