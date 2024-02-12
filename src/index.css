@@ -17,3 +17,7 @@
 #root{
   overflow:hidden
 }
+#email, #password, #regemail, #regpassword, #name{
+  background-color: transparent;
+  border: 1px solid #BFBBBB
+}

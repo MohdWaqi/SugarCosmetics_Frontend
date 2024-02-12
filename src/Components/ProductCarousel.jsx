@@ -6,9 +6,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 import ProductCard from './ProductCard';
 import background2 from "../assets/10047.jpeg";
-import img1 from "../assets/best4.jpg";
 
-const ProductCarousel = ({dark, title, products, best }) => {
+const ProductCarousel = ({dark, products, best }) => {
     const [hover, setHover] = useState(false)
   return (
     <Box backgroundImage={dark &&`url(${background2})`} bg={!dark&&"#FBFBFB"} mb="5%" py="3%" gap="2%" onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
