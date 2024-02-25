@@ -318,7 +318,7 @@ const AllProducts = () => {
           </Box>
         </Box>
         <Grid w="70%"  templateColumns="repeat(3, 1fr)" gap={6} textAlign="center">
-            {products.length >0 && products.map((product, i)=><ProductCard productImage={product.image} productName={product.title} productVariety={`${product.shades.length} Shades`} productPrice={product.price} discountPrice={product.discountPrice}/>)}
+            {products.length >0 && products.map((product, i)=><ProductCard productImage={product.image} productName={product.title} productVariety={`${product.shades.length} Shades`} fullProduct={product} productPrice={product.price} discountPrice={product.discountPrice}/>)}
         </Grid>
       </Flex>
       <Footer />

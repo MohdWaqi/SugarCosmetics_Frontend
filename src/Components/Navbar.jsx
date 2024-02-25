@@ -28,12 +28,14 @@ import bagIcon from "../assets/10007.svg";
 import offerIcon from "../assets/10008.svg";
 import menuData from "../assets/menuDB.json";
 import MenuBar from "./MenuBar";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate()
   return (
     <Box bg="black" position="fixed" w="100vw" zIndex={2}>
       <Flex h="10vh" alignItems="center" mx="2%">
-        <Img w="22%" h="10vh" src={logo} />
+        <Img onClick={()=>navigate("/")} cursor="pointer" w="22%" h="10vh" src={logo} />
         <InputGroup w="47%" mx="2%" _focus={{ outline: 0 }}>
           <Input
             borderRadius="10px"
@@ -52,14 +54,14 @@ const Navbar = () => {
           </InputRightElement>
         </InputGroup>
         <Flex mx="5.2%">
-          <Link display="flex" alignItems="center">
+          <Link display="flex" alignItems="center" onClick={()=>{navigate("/login")}}>
             <Img w="30px" mx="4%" src={userIcon} />
             <Text color="white">Login/Register</Text>
           </Link>
         </Flex>
         <Flex>
-          <Img w="20px" mx="12%" src={wishlistIcon} />
-          <Img w="20px" mx="12%" src={bagIcon} />
+          <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/wishlist")} src={wishlistIcon} />
+          <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/bag")} src={bagIcon} />
           <Img w="20px" mx="12%" src={offerIcon} />
         </Flex>
       </Flex>

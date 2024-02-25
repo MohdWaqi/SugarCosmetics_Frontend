@@ -7,10 +7,13 @@ import ProductCarousel from "../Components/ProductCarousel";
 
 import saveImage from "../assets/save.gif"
 import BagCard from "../Components/BagCard";
+import { useNavigate } from "react-router-dom";
 
 const Bag = () => {
   const [adData, setAdData] = useState({});
   const [bagItems, setBagItems] = useState([]);
+  const [emptyBag, setEmptyBag] = useState(false); 
+  const navigate = useNavigate()
   useEffect(() => {
     setAdData({
       bestSeller: {
@@ -179,7 +182,7 @@ const Bag = () => {
           borderRadius="10px"
           justifyContent="center"
         >
-          {false && (
+          {emptyBag ? 
             <Box textAlign="center">
               <Image m="auto" mb="3%" src={empty} />
               <Text fontWeight="500" color="#807E7E">
@@ -191,11 +194,12 @@ const Bag = () => {
               <Text fontWeight="500" color="#807E7E">
                 Why not add some products?
               </Text>
-              <Button bg="black" color="white" p="1.8%" my="4%">
+              <Button bg="black" color="white" p="8% 10%" my="4%" _hover={{}} _active={{}} onClick={()=>navigate("/")} >
                 SHOP NOW
               </Button>
             </Box>
-          )}
+          :
+          <>
           <Box w="50%" p="1.5%">
             <Heading size="md" mb="2%">BAG SUMMARY</Heading>
             <Box border="1px solid #BFBBBB" p="1% 2%" borderRadius="15px">
@@ -227,13 +231,15 @@ const Bag = () => {
                     <Heading  w="30%" size="md" textAlign="right">₹{calculateDiscountedPrice()}</Heading>
                 </Flex>       
             </Box>
+            
             <Flex justifyContent="flex-end" mt="5%">
                 <Button bg="black" color="white" fontSize="1.2rem" p="3.5% 10%" _hover={{}} _active={{}} >₹{calculateDiscountedPrice()} PLACE ORDER</Button>
             </Flex>
             </Box>
           </Box>
+          </>}
         </Flex>
-        {false && (
+        {emptyBag && (
           <ProductCarousel
             dark={false}
             products={adData.bestSeller}

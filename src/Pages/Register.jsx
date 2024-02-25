@@ -4,14 +4,16 @@ import loginImg from "../assets/login.jpg";
 import loginBg from "../assets/loginBg.jpg";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Field, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
   return (
     <Flex h="100vh">
       <Img src={loginImg} />
       <Box flex={1} backgroundImage={`url(${loginBg})`} p="2%">
         <Box>
-          <ArrowBackIcon fontSize="1.5rem" />
+          <ArrowBackIcon cursor="pointer" onClick={()=>navigate("/")} fontSize="1.5rem" />
         </Box>
         <Box textAlign="center">
           <Heading fontSize="8rem" color="#D9D9D9">
@@ -79,7 +81,7 @@ const Register = () => {
             </form>
           )}
         </Formik>
-        <Text p="5%">Already have an Account? <Link color="#FF008B">Login</Link></Text>
+        <Text p="5%">Already have an Account? <Link color="#FF008B" onClick={()=>navigate("/login")}>Login</Link></Text>
         </Box>
         </Box>
       </Box>

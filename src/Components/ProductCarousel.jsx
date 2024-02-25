@@ -19,6 +19,7 @@ const ProductCarousel = ({dark, products, best }) => {
             showIndicators={false}
             showStatus={false}
             stopOnHover={true}
+            showThumbs={true}
             renderArrowPrev={(clickHandler, hasPrev) => {
               return (
                 <div>
@@ -37,6 +38,7 @@ const ProductCarousel = ({dark, products, best }) => {
                       left: "4%",
                       backgroundColor: dark?"white":"rgba(0,0,0,0.5)",
                       cursor: "pointer",
+                  
                     }}
                     onClick={clickHandler}
                   >
@@ -82,6 +84,7 @@ const ProductCarousel = ({dark, products, best }) => {
                   productPrice={details.price}
                   discountPrice={details.discountPrice}
                   best={best}
+                  fullProduct={details}
                 />)}
   
               </Flex>
