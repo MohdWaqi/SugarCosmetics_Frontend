@@ -5,6 +5,7 @@ import like from "../assets/10014.svg"
 import bestSellerIcon from "../assets/10015.svg"
 import { useNavigate } from "react-router-dom";
 import liked from "../assets/getLiked.svg"
+import CustomToast from "./CustomToast";
 
 const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice, best, fullProduct}) => {
   const toast = useToast()
@@ -16,19 +17,28 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
       console.log(fullProduct)
       toast({
         position: "bottom-left",
-        isClosable: true,
         render: () => (
-          <Box color='#FFFFFF' bg="black" p={"5% 10%"} borderRadius="10px" width="max-content" fontWeight={700} >
-            Added to Wishlist
-          </Box>)
-      })
-    }else{
-      toast({
-        title: `Removed from Wishlist`,
-        position: "bottom-left",
-        isClosable: true,
+          <CustomToast message="Added to Wishlist" />)
+        })
+      }else{
+        toast({
+          position: "bottom-left",
+          render:() =>(
+          <CustomToast message="Removed from Wishlist" />
+
+        )
       })
     }
+  }
+  const handleBag = () =>{
+    toast({
+      position: "bottom-left",
+      render:() =>(
+      <CustomToast message="Item Added Successfully" />
+  
+    )
+      })
+    
   }
   return (
     <Box
@@ -64,6 +74,7 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
           color="white"
           p="7% 15%"
           _hover={{ backgroundColor: "black" }}
+          onClick={handleBag}
         >
           ADD TO BAG
         </Button>

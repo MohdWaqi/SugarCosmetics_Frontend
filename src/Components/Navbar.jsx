@@ -18,8 +18,9 @@ import {
   Heading,
   UnorderedList,
   ListItem,
+  MenuItem,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/10001.svg";
 import searchIcon from "../assets/10002.svg";
 import userIcon from "../assets/10005.svg";
@@ -29,9 +30,12 @@ import offerIcon from "../assets/10008.svg";
 import menuData from "../assets/menuDB.json";
 import MenuBar from "./MenuBar";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContextProvider";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const {isAuth} = useContext(AuthContext)
   return (
     <Box bg="black" position="fixed" w="100vw" zIndex={2}>
       <Flex h="10vh" alignItems="center" mx="2%">
@@ -53,11 +57,21 @@ const Navbar = () => {
             </Button>
           </InputRightElement>
         </InputGroup>
-        <Flex mx="5.2%">
-          <Link display="flex" alignItems="center" onClick={()=>{navigate("/login")}}>
+        <Flex mx="5%" alignItems="center">
+          <Link display="flex" alignItems="center" onClick={()=>{!isAuth && navigate("/login")}}>
             <Img w="30px" mx="4%" src={userIcon} />
-            <Text color="white">Login/Register</Text>
+            <Text color="white" minW="max-content">{isAuth?"Hi, Sugar Fan":"Login/Register"}</Text>
           </Link>
+            {/* {isAuth&& <ChevronDownIcon ml="5%" cursor="pointer" color="white" onClick={}/>} */}
+            <Menu>
+  <MenuButton as={Button} bg="transparent" _hover={{}} _active={{}}>
+  <ChevronDownIcon cursor="pointer" color="white"/>
+  </MenuButton>
+  <MenuList minW="max-content" px="30%">
+    <MenuItem  bg="transparent" >Logout</MenuItem>
+
+  </MenuList>
+</Menu>
         </Flex>
         <Flex>
           <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/wishlist")} src={wishlistIcon} />
