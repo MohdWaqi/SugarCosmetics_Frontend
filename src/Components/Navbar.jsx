@@ -62,8 +62,8 @@ const Navbar = () => {
             <Img w="30px" mx="4%" src={userIcon} />
             <Text color="white" minW="max-content">{isAuth?"Hi, Sugar Fan":"Login/Register"}</Text>
           </Link>
-            {/* {isAuth&& <ChevronDownIcon ml="5%" cursor="pointer" color="white" onClick={}/>} */}
-            <Menu>
+            
+            {isAuth &&<Menu>
   <MenuButton as={Button} bg="transparent" _hover={{}} _active={{}}>
   <ChevronDownIcon cursor="pointer" color="white"/>
   </MenuButton>
@@ -71,7 +71,7 @@ const Navbar = () => {
     <MenuItem  bg="transparent" >Logout</MenuItem>
 
   </MenuList>
-</Menu>
+</Menu>}
         </Flex>
         <Flex>
           <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/wishlist")} src={wishlistIcon} />

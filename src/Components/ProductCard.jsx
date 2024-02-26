@@ -1,15 +1,18 @@
-import { Box, Button, Flex, Image, Text, useToast, } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Button, Flex, Image, Modal, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure, useToast, } from "@chakra-ui/react";
+import React, { useContext, useState } from "react";
 import priceIcon from "../assets/10013.svg"
 import like from "../assets/10014.svg"
 import bestSellerIcon from "../assets/10015.svg"
 import { useNavigate } from "react-router-dom";
 import liked from "../assets/getLiked.svg"
 import CustomToast from "./CustomToast";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice, best, fullProduct}) => {
   const toast = useToast()
   const [likeProduct, setLikeProduct] = useState(false)
+  const {isAuth} = useContext(AuthContext)
+  const {isOpen, onOpen, onClose} =useDisclosure()
   const navigate = useNavigate()
   const handleWishlist =() =>{
     setLikeProduct(!likeProduct)
@@ -50,6 +53,7 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
       boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px"
 
     >
+    
       {best &&<Image position="absolute" className="tag" src={bestSellerIcon} />}
       <Image onClick={()=>navigate("/products")} className="carouselImg" h="200px" m="auto" borderRadius="10px" pt="1%" src={productImage} />
       <Text onClick={()=>navigate("/products")} px="15%" fontSize={"0.85rem"}>
@@ -68,7 +72,21 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
         </Text>
       </Flex>
       <Flex justifyContent="space-between" p="5%">
-        <Image onClick={handleWishlist} className="priceImg" src={likeProduct?liked:like} />
+        <Image onClick={isAuth ? handleWishlist: onOpen} className="priceImg" src={likeProduct?liked:like} />
+
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent textAlign="center">
+          <ModalHeader>Please Login to Add to Wishlist</ModalHeader>
+          
+          <Flex justifyContent="center" gap="50px" mb="5%">
+            <Button bg='black' color="white" _hover={{}} _active={{}} onClick={onClose}>
+              CANCEL
+            </Button>
+            <Button bg='black' color="white" _hover={{}} _active={{}} onClick={()=>navigate("/login")}>LOGIN</Button>
+          </Flex>
+        </ModalContent>
+      </Modal>
         <Button
           bg="black"
           color="white"
