@@ -8,7 +8,7 @@ import liked from "../assets/getLiked.svg"
 import CustomToast from "./CustomToast";
 import { AuthContext } from "../Context/AuthContextProvider";
 
-const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice, best, fullProduct}) => {
+const ProductCard = ({productImage, productName, productVariety, productPrice, discountPrice, best, productId}) => {
   const toast = useToast()
   const [likeProduct, setLikeProduct] = useState(false)
   const {isAuth} = useContext(AuthContext)
@@ -55,14 +55,14 @@ const ProductCard = ({productImage, productName, productVariety, productPrice, d
     >
     
       {best &&<Image position="absolute" className="tag" src={bestSellerIcon} />}
-      <Image onClick={()=>navigate("/products")} className="carouselImg" h="200px" m="auto" borderRadius="10px" pt="1%" src={productImage} />
-      <Text onClick={()=>navigate("/products")} px="15%" fontSize={"0.85rem"}>
+      <Image onClick={()=>navigate(`/products/${productId}`)} className="carouselImg" h="200px" m="auto" borderRadius="10px" pt="1%" src={productImage} />
+      <Text onClick={()=>navigate(`/products/${productId}`)} px="15%" fontSize={"0.85rem"}>
         {productName}
       </Text>
-      <Text onClick={()=>navigate("/products")} px="15%" color="gray">
+      <Text onClick={()=>navigate(`/products/${productId}`)} px="15%" color="gray">
         {productVariety}
       </Text>
-      <Text onClick={()=>navigate("/products")} px="15%" fontSize="1.2rem" fontWeight="700">
+      <Text onClick={()=>navigate(`/products/${productId}`)} px="15%" fontSize="1.2rem" fontWeight="700">
         ₹{productPrice}
       </Text>
       <Flex alignItems="center" justifyContent="center">
