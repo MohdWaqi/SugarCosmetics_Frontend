@@ -34,12 +34,18 @@ import { AuthContext } from "../Context/AuthContextProvider";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const {isAuth} = useContext(AuthContext)
+  const navigate = useNavigate();
+  const { isAuth } = useContext(AuthContext);
   return (
     <Box bg="black" position="fixed" w="100vw" zIndex={2}>
       <Flex h="10vh" alignItems="center" mx="2%">
-        <Img onClick={()=>navigate("/")} cursor="pointer" w="22%" h="10vh" src={logo} />
+        <Img
+          onClick={() => navigate("/")}
+          cursor="pointer"
+          w="22%"
+          h="10vh"
+          src={logo}
+        />
         <InputGroup w="47%" mx="2%" _focus={{ outline: 0 }}>
           <Input
             borderRadius="10px"
@@ -58,24 +64,45 @@ const Navbar = () => {
           </InputRightElement>
         </InputGroup>
         <Flex mx="5%" alignItems="center">
-          <Link display="flex" alignItems="center" onClick={()=>{!isAuth && navigate("/login")}}>
+          <Link
+            display="flex"
+            alignItems="center"
+            onClick={() => {
+              !isAuth && navigate("/login");
+            }}
+          >
             <Img w="30px" mx="4%" src={userIcon} />
-            <Text color="white" minW="max-content">{isAuth?"Hi, Sugar Fan":"Login/Register"}</Text>
+            <Text color="white" minW="max-content">
+              {isAuth ? "Hi, Sugar Fan" : "Login/Register"}
+            </Text>
           </Link>
-            
-            {isAuth &&<Menu>
-  <MenuButton as={Button} bg="transparent" _hover={{}} _active={{}}>
-  <ChevronDownIcon cursor="pointer" color="white"/>
-  </MenuButton>
-  <MenuList minW="max-content" px="30%">
-    <MenuItem  bg="transparent" >Logout</MenuItem>
 
-  </MenuList>
-</Menu>}
+          {isAuth && (
+            <Menu>
+              <MenuButton as={Button} bg="transparent" _hover={{}} _active={{}}>
+                <ChevronDownIcon cursor="pointer" color="white" />
+              </MenuButton>
+              <MenuList minW="max-content" px="30%">
+                <MenuItem bg="transparent">Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          )}
         </Flex>
         <Flex>
-          <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/wishlist")} src={wishlistIcon} />
-          <Img w="20px" mx="12%" cursor="pointer" onClick={()=>navigate("/bag")} src={bagIcon} />
+          <Img
+            w="20px"
+            mx="12%"
+            cursor="pointer"
+            onClick={() => navigate("/wishlist")}
+            src={wishlistIcon}
+          />
+          <Img
+            w="20px"
+            mx="12%"
+            cursor="pointer"
+            onClick={() => navigate("/bag")}
+            src={bagIcon}
+          />
           <Img w="20px" mx="12%" src={offerIcon} />
         </Flex>
       </Flex>

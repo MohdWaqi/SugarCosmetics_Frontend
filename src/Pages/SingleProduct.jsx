@@ -1,36 +1,96 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { Box, Button, Flex, Image, Img, Text } from "@chakra-ui/react";
-import like from "../assets/10014.svg"
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Img,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
+import like from "../assets/10014.svg";
 import ProductCarousel from "../Components/ProductCarousel";
 import { useParams } from "react-router-dom";
 import { getSingleProduct, homePageData } from "../services/Api";
+import liked from "../assets/getLiked.svg";
+import { AuthContext } from "../Context/AuthContextProvider";
+import CustomToast from "../Components/CustomToast";
 
 const SingleProduct = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const toast = useToast();
   const [data, setData] = useState({});
-  const [extraAd, setExtraAd] = useState({})
-  const {id} = useParams()
-  const getProduct = async(id)=>{
-    try {
-      const response = await getSingleProduct(id)
-      setData(response.data)
-    } catch (error) {
-      console.log("Product not found")
+  const [extraAd, setExtraAd] = useState({});
+  const { isAuth } = useContext(AuthContext);
+  const { id } = useParams();
+  const [likeProduct, setLikeProduct] = useState(false);
+  const handleWishlist = () => {
+    setLikeProduct(!likeProduct);
+    if (!likeProduct) {
+      toast({
+        position: "bottom-left",
+        render: () => <CustomToast message="Added to Wishlist" />,
+      });
+    } else {
+      toast({
+        position: "bottom-left",
+        render: () => <CustomToast message="Removed from Wishlist" />,
+      });
     }
-  }
+  };
+  const handleBag = () => {
+    if (localStorage.getItem("bagItem") === null) {
+      localStorage.setItem(
+        "bagItem",
+        JSON.stringify([{ ...data, quantity: 1 }])
+      );
+    } else {
+      const bagData = JSON.parse(localStorage.getItem("bagItem"));
 
-  const extra = async()=>{
-    try {
-      const response = await homePageData()
-      setExtraAd(response.data)
-    } catch (error) {
-      console.log("Something went wrong")
+      if (bagData.some((data) => data._id == id)) {
+        bagData.some((data) => {
+          if (data._id == id) {
+            data.quantity += 1;
+          }
+        });
+        localStorage.setItem("bagItem", JSON.stringify(bagData));
+      } else {
+        bagData.push({ ...data, quantity: 1 });
+        localStorage.setItem("bagItem", JSON.stringify(bagData));
+      }
     }
-  }
+    toast({
+      position: "bottom-left",
+      render: () => <CustomToast message="Item Added Successfully" />,
+    });
+  };
+  const getProduct = async (id) => {
+    try {
+      const response = await getSingleProduct(id);
+      setData(response.data);
+    } catch (error) {
+      console.log("Product not found");
+    }
+  };
+
+  const extra = async () => {
+    try {
+      const response = await homePageData();
+      setExtraAd(response.data);
+    } catch (error) {
+      console.log("Something went wrong");
+    }
+  };
   useEffect(() => {
-    getProduct(id)
-    extra()
+    getProduct(id);
+    extra();
   }, []);
 
   return (
@@ -105,17 +165,49 @@ const SingleProduct = () => {
                 ₹{data.price}
               </Text>
               <Flex>
-              <Image w="60px" src={like} />
-              <Button
-                bg="black"
-                color="white"
-                w="40%"
-                ml="5%"
-                h="max-height"
-                _hover={{ backgroundColor: "black" }}
-              >
-                ADD TO BAG
-              </Button>
+                <Image
+                  w="60px"
+                  onClick={isAuth ? handleWishlist : onOpen}
+                  src={likeProduct ? liked : like}
+                />
+                <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                  <ModalOverlay />
+                  <ModalContent textAlign="center">
+                    <ModalHeader>Please Login to Add to Wishlist</ModalHeader>
+
+                    <Flex justifyContent="center" gap="50px" mb="5%">
+                      <Button
+                        bg="black"
+                        color="white"
+                        _hover={{}}
+                        _active={{}}
+                        onClick={onClose}
+                      >
+                        CANCEL
+                      </Button>
+                      <Button
+                        bg="black"
+                        color="white"
+                        _hover={{}}
+                        _active={{}}
+                        onClick={() => navigate("/login")}
+                      >
+                        LOGIN
+                      </Button>
+                    </Flex>
+                  </ModalContent>
+                </Modal>
+                <Button
+                  bg="black"
+                  color="white"
+                  w="40%"
+                  ml="5%"
+                  h="max-height"
+                  _hover={{ backgroundColor: "black" }}
+                  onClick={handleBag}
+                >
+                  ADD TO BAG
+                </Button>
               </Flex>
               <Text fontSize="1.2rem" my="2%" fontWeight="600">
                 Description
@@ -124,9 +216,16 @@ const SingleProduct = () => {
             </Box>
           </Flex>
         </Box>
-        {extraAd.bestSeller&&<ProductCarousel dark={false} products={extraAd.bestSeller} best={true}/> }
-        {extraAd.bestSeller&&<ProductCarousel dark={false} products={extraAd.justIn} best={true}/> }
-
+        {extraAd.bestSeller && (
+          <ProductCarousel
+            dark={false}
+            products={extraAd.bestSeller}
+            best={true}
+          />
+        )}
+        {extraAd.bestSeller && (
+          <ProductCarousel dark={false} products={extraAd.justIn} best={true} />
+        )}
       </Box>
       <Footer />
     </>

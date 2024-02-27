@@ -1,7 +1,17 @@
-import { Box, Button, Flex, Heading, Img, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
-import React from 'react'
-import CustomHeading from './CustomHeading'
-import FooterData from './FooterData'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Img,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+} from "@chakra-ui/react";
+import React from "react";
+import CustomHeading from "./CustomHeading";
+import FooterData from "./FooterData";
 import footerLogo from "../assets/10048.svg";
 import fb from "../assets/svg-image-20.svg";
 import tb from "../assets/svg-image-21.svg";
@@ -14,11 +24,10 @@ import appleApp from "../assets/10054.png";
 import androidApp from "../assets/10049.png";
 import stayTouch from "../assets/touch.svg";
 
-
 const Footer = () => {
   return (
     <>
-        <Box
+      <Box
         textAlign="center"
         backgroundImage={`url(${stayTouch})`}
         backgroundSize="cover"
@@ -231,7 +240,7 @@ const Footer = () => {
         </Text>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

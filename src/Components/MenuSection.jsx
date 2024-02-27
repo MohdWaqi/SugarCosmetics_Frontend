@@ -3,7 +3,6 @@ import React from "react";
 import MenuSingleItem from "./MenuSingleItem";
 
 const MenuSection = ({ detailData }) => {
-  console.log(detailData);
   return (
     <Flex>
       {detailData?.length &&
@@ -14,7 +13,9 @@ const MenuSection = ({ detailData }) => {
             </Text>
             <UnorderedList fontSize="small" color="gray" spacing="5%" mt="5%">
               {data.list?.length &&
-                data.list.map((item, index) => <MenuSingleItem key={index} item={item} />)}
+                data.list.map((item, index) => (
+                  <MenuSingleItem key={index} item={item} />
+                ))}
             </UnorderedList>
           </Box>
         ))}

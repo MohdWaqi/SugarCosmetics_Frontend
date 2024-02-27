@@ -16,24 +16,24 @@ import {
   Text,
 } from "@chakra-ui/react";
 import FilterOption from "../Components/FilterOption";
-import optionFilter from "../assets/filters.json"
+import optionFilter from "../assets/filters.json";
 import ProductCard from "../Components/ProductCard";
 import { allProducts } from "../services/Api";
 
 const AllProducts = () => {
-    const [products, setProducts] = useState([])
-    const getProducts = async() =>{
-      try {
-        const response = await allProducts()
-        setProducts(response.data)
-      } catch (error) {
-        console.log(error)
-      }
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    try {
+      const response = await allProducts();
+      setProducts(response.data);
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(() => {
-      getProducts()
-    }, [])
-    
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -80,12 +80,29 @@ const AllProducts = () => {
               Filters
             </Text>
             <Accordion allowToggle border="transparent">
-              <FilterOption optionData={optionFilter}/>
+              <FilterOption optionData={optionFilter} />
             </Accordion>
           </Box>
         </Box>
-        <Grid w="70%"  templateColumns="repeat(3, 1fr)" gap={6} textAlign="center">
-            {products.length >0 && products.map((product, i)=><ProductCard key={product._id} productImage={product.image} productName={product.title} productVariety={`${product.shades.length} Shades`} productId={product._id} productPrice={product.price} discountPrice={product.discountPrice}/>)}
+        <Grid
+          w="70%"
+          templateColumns="repeat(3, 1fr)"
+          gap={6}
+          textAlign="center"
+        >
+          {products.length > 0 &&
+            products.map((product, i) => (
+              <ProductCard
+                key={product._id}
+                productImage={product.image}
+                productName={product.title}
+                productVariety={`${product.shades.length} Shades`}
+                productId={product._id}
+                productPrice={product.price}
+                discountPrice={product.discountPrice}
+                fullProduct={product}
+              />
+            ))}
         </Grid>
       </Flex>
       <Footer />
