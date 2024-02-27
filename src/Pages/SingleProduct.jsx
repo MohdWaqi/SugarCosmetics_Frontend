@@ -18,7 +18,7 @@ import {
 import like from "../assets/10014.svg";
 import ProductCarousel from "../Components/ProductCarousel";
 import { useParams } from "react-router-dom";
-import { getSingleProduct, homePageData } from "../services/Api";
+import { addWishedItems, deleteWishedItems, getSingleProduct, homePageData } from "../services/Api";
 import liked from "../assets/getLiked.svg";
 import { AuthContext } from "../Context/AuthContextProvider";
 import CustomToast from "../Components/CustomToast";
@@ -31,19 +31,30 @@ const SingleProduct = () => {
   const { isAuth } = useContext(AuthContext);
   const { id } = useParams();
   const [likeProduct, setLikeProduct] = useState(false);
-  const handleWishlist = () => {
-    setLikeProduct(!likeProduct);
-    if (!likeProduct) {
-      toast({
-        position: "bottom-left",
-        render: () => <CustomToast message="Added to Wishlist" />,
-      });
-    } else {
-      toast({
-        position: "bottom-left",
-        render: () => <CustomToast message="Removed from Wishlist" />,
-      });
-    }
+  const handleWishlist = async() => {
+    try {
+      const config={
+        Authorization: `Bearer ${isAuth.accessToken}`,
+        "Content-Type": "application/json",
+      }
+      if (!likeProduct) {
+        await addWishedItems({id}, config)
+        toast({
+          position: "bottom-left",
+          render: () => <CustomToast message="Added to Wishlist" />,
+        });
+          
+      } else {
+        const response= await deleteWishedItems(id, config)
+        toast({
+          position: "bottom-left",
+          render: () => <CustomToast message="Removed from Wishlist" />,
+        });
+      }
+      setLikeProduct(!likeProduct);
+      } catch (error) {
+        console.log(error)
+      }
   };
   const handleBag = () => {
     if (localStorage.getItem("bagItem") === null) {
@@ -92,6 +103,10 @@ const SingleProduct = () => {
     getProduct(id);
     extra();
   }, []);
+  
+  useEffect(()=>{
+    setLikeProduct(data.like)
+  }, [data])
 
   return (
     <>

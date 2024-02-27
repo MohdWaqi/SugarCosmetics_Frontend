@@ -97,9 +97,9 @@ const AllProducts = () => {
                 productImage={product.image}
                 productName={product.title}
                 productVariety={`${product.shades.length} Shades`}
-                productId={product._id}
                 productPrice={product.price}
                 discountPrice={product.discountPrice}
+                best={false}
                 fullProduct={product}
               />
             ))}

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import refer from "../assets/refer.jpg";
 import carouselImg1 from "../assets/1.jpg";
 import carouselImg2 from "../assets/2.jpg";
@@ -19,18 +24,19 @@ import ProductCarousel from "../Components/ProductCarousel";
 import Footer from "../Components/Footer";
 import { homePageData } from "../services/Api";
 
+
 const Home = () => {
   const [homeData, setHomeData] = useState({});
-  const getData = async () => {
+  const getData = async() =>{
     try {
-      const response = await homePageData();
+      const response = await homePageData()
       setHomeData(response.data);
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
   useEffect(() => {
-    getData();
+    getData()
   }, []);
   return (
     <>
@@ -96,7 +102,7 @@ const Home = () => {
         </Box>
         <ProductCarousel dark={false} products={homeData.merch} best={false} />
       </Box>
-      <Footer />
+      <Footer/>
     </>
   );
 };

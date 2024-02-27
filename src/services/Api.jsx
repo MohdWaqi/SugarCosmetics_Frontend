@@ -24,3 +24,13 @@ export const validateUser = async(data, header)=>{
 export const logout = async()=>{
     return await commonRequest("GET", `${BASE_URL}/logout`,"", "", true)
 }
+
+export const getWishedItems = async(header) => {
+    return await commonRequest("GET", `${BASE_URL}/wishlist`,"", header, true)
+}
+export const addWishedItems = async(id, header) => {
+    return await commonRequest("POST", `${BASE_URL}/wishlist/add`,id,header, true)
+}
+export const deleteWishedItems = async(id, header) => {
+    return await commonRequest("DELETE", `${BASE_URL}/wishlist/delete/${id}`,{}, header)
+}

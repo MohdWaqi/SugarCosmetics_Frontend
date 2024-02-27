@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import liked from "../assets/getLiked.svg";
 import CustomToast from "./CustomToast";
 import { AuthContext } from "../Context/AuthContextProvider";
+import { addWishedItems, deleteWishedItems } from "../services/Api";
 
 const ProductCard = ({
   productImage,
@@ -27,27 +28,39 @@ const ProductCard = ({
   productPrice,
   discountPrice,
   best,
-  productId,
   fullProduct,
 }) => {
   const toast = useToast();
-  const [likeProduct, setLikeProduct] = useState(false);
+  const [likeProduct, setLikeProduct] = useState(fullProduct.like);
   const { isAuth } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  const handleWishlist = () => {
-    setLikeProduct(!likeProduct);
-    if (!likeProduct) {
-      toast({
-        position: "bottom-left",
-        render: () => <CustomToast message="Added to Wishlist" />,
-      });
-    } else {
-      toast({
-        position: "bottom-left",
-        render: () => <CustomToast message="Removed from Wishlist" />,
-      });
-    }
+  const handleWishlist = async() => {
+    try {
+      const config={
+        Authorization: `Bearer ${isAuth.accessToken}`,
+        "Content-Type": "application/json",
+      }
+      if (!likeProduct) {
+        await addWishedItems({id:fullProduct._id}, config)
+        toast({
+          position: "bottom-left",
+          render: () => <CustomToast message="Added to Wishlist" />,
+        });
+        
+        
+      } else {
+         await deleteWishedItems(fullProduct._id, config)
+        toast({
+          position: "bottom-left",
+          render: () => <CustomToast message="Removed from Wishlist" />,
+        });
+        
+      }
+      setLikeProduct(!likeProduct);
+      } catch (error) {
+        console.log(error)
+      }
   };
   const handleBag = () => {
     if (localStorage.getItem("bagItem") === null) {
@@ -59,7 +72,7 @@ const ProductCard = ({
       const bagData = JSON.parse(localStorage.getItem("bagItem"));
 
       const existingItemIndex = bagData.findIndex(
-        (data) => data._id == productId
+        (data) => data._id == fullProduct._id
       );
       if (existingItemIndex !== -1) {
         bagData[existingItemIndex].quantity += 1;
@@ -86,7 +99,7 @@ const ProductCard = ({
         <Image position="absolute" className="tag" src={bestSellerIcon} />
       )}
       <Image
-        onClick={() => navigate(`/products/${productId}`)}
+        onClick={() => navigate(`/products/${fullProduct._id}`)}
         className="carouselImg"
         h="200px"
         m="auto"
@@ -95,21 +108,21 @@ const ProductCard = ({
         src={productImage}
       />
       <Text
-        onClick={() => navigate(`/products/${productId}`)}
+        onClick={() => navigate(`/products/${fullProduct._id}`)}
         px="15%"
         fontSize={"0.85rem"}
       >
         {productName}
       </Text>
       <Text
-        onClick={() => navigate(`/products/${productId}`)}
+        onClick={() => navigate(`/products/${fullProduct._id}`)}
         px="15%"
         color="gray"
       >
         {productVariety}
       </Text>
       <Text
-        onClick={() => navigate(`/products/${productId}`)}
+        onClick={() => navigate(`/products/${fullProduct._id}`)}
         px="15%"
         fontSize="1.2rem"
         fontWeight="700"

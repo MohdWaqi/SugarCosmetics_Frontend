@@ -1,4 +1,4 @@
-import { Box, ListItem, Text, UnorderedList, Flex } from "@chakra-ui/react";
+import { Box, Text, UnorderedList, Flex } from "@chakra-ui/react";
 import React from "react";
 import MenuSingleItem from "./MenuSingleItem";
 
