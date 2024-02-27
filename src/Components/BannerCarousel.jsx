@@ -15,7 +15,7 @@ const BannerCarousel = ({ imageList }) => {
       showStatus={false}
       stopOnHover={true}
       dynamicHeight={true}
-      renderArrowPrev={(clickHandler, hasPrev) => {
+      renderArrowPrev={(clickHandler) => {
         return (
           <div
             style={{
@@ -39,7 +39,7 @@ const BannerCarousel = ({ imageList }) => {
           </div>
         );
       }}
-      renderArrowNext={(clickHandler, hasNext) => {
+      renderArrowNext={(clickHandler) => {
         return (
           <div
             style={{
@@ -65,8 +65,8 @@ const BannerCarousel = ({ imageList }) => {
       }}
     >
       {imageList.length &&
-        imageList.map((image) => (
-          <Box>
+        imageList.map((image, i) => (
+          <Box key={i}>
             <Image src={image} />
           </Box>
         ))}

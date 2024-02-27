@@ -105,7 +105,7 @@ const SingleProduct = () => {
   }, []);
   
   useEffect(()=>{
-    setLikeProduct(data.like)
+    setLikeProduct(isAuth?.accessToken?data.like:false)
   }, [data])
 
   return (

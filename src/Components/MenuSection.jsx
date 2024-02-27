@@ -6,8 +6,8 @@ const MenuSection = ({ detailData }) => {
   return (
     <Flex>
       {detailData?.length &&
-        detailData.map((data) => (
-          <Box p="10px 20px" m="10px 20px" w="14rem">
+        detailData.map((data,i) => (
+          <Box key={i} p="10px 20px" m="10px 20px" w="14rem">
             <Text fontWeight="700" _hover={{ color: "#FF008B" }}>
               {data.product}
             </Text>

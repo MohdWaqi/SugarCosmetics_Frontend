@@ -31,36 +31,35 @@ const ProductCard = ({
   fullProduct,
 }) => {
   const toast = useToast();
-  const [likeProduct, setLikeProduct] = useState(fullProduct.like);
   const { isAuth } = useContext(AuthContext);
+  const [likeProduct, setLikeProduct] = useState(
+    isAuth?.accessToken ? fullProduct.like : false
+  );
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  const handleWishlist = async() => {
+  const handleWishlist = async () => {
     try {
-      const config={
+      const config = {
         Authorization: `Bearer ${isAuth.accessToken}`,
         "Content-Type": "application/json",
-      }
+      };
       if (!likeProduct) {
-        await addWishedItems({id:fullProduct._id}, config)
+        await addWishedItems({ id: fullProduct._id }, config);
         toast({
           position: "bottom-left",
           render: () => <CustomToast message="Added to Wishlist" />,
         });
-        
-        
       } else {
-         await deleteWishedItems(fullProduct._id, config)
+        await deleteWishedItems(fullProduct._id, config);
         toast({
           position: "bottom-left",
           render: () => <CustomToast message="Removed from Wishlist" />,
         });
-        
       }
       setLikeProduct(!likeProduct);
-      } catch (error) {
-        console.log(error)
-      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleBag = () => {
     if (localStorage.getItem("bagItem") === null) {
