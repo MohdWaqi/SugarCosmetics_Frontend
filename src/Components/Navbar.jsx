@@ -32,10 +32,20 @@ import MenuBar from "./MenuBar";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { logout } from "../services/Api";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, setAuth } = useContext(AuthContext);
+  const handleLogout =async()=>{
+    try {
+      await logout()
+      sessionStorage.removeItem("auth")
+      setAuth(null)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Box bg="black" position="fixed" w="100vw" zIndex={2}>
       <Flex h="10vh" alignItems="center" mx="2%">
@@ -68,22 +78,22 @@ const Navbar = () => {
             display="flex"
             alignItems="center"
             onClick={() => {
-              !isAuth && navigate("/login");
+              !isAuth?.accessToken && navigate("/login");
             }}
           >
             <Img w="30px" mx="4%" src={userIcon} />
             <Text color="white" minW="max-content">
-              {isAuth ? "Hi, Sugar Fan" : "Login/Register"}
+              {isAuth?.accessToken ? "Hi, Sugar Fan" : "Login/Register"}
             </Text>
           </Link>
 
-          {isAuth && (
+          {isAuth?.accessToken && (
             <Menu>
               <MenuButton as={Button} bg="transparent" _hover={{}} _active={{}}>
                 <ChevronDownIcon cursor="pointer" color="white" />
               </MenuButton>
               <MenuList minW="max-content" px="30%">
-                <MenuItem bg="transparent">Logout</MenuItem>
+                <MenuItem bg="transparent" onClick={handleLogout}>Logout</MenuItem>
               </MenuList>
             </Menu>
           )}

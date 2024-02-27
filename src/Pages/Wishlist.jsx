@@ -173,7 +173,7 @@ const Wishlist = () => {
             </Box>
           </Box>
           <Flex flex={1}>
-            {false ? (
+            {(wishProduct.length == 0) ? (
               <Box
                 textAlign="center"
                 w="100%"

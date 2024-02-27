@@ -5,7 +5,6 @@ import {
   Image,
   Modal,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Text,
@@ -125,7 +124,7 @@ const ProductCard = ({
       </Flex>
       <Flex justifyContent="space-between" p="5%">
         <Image
-          onClick={isAuth ? handleWishlist : onOpen}
+          onClick={isAuth?.accessToken ? handleWishlist : onOpen}
           className="priceImg"
           src={likeProduct ? liked : like}
         />

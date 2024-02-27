@@ -167,7 +167,7 @@ const SingleProduct = () => {
               <Flex>
                 <Image
                   w="60px"
-                  onClick={isAuth ? handleWishlist : onOpen}
+                  onClick={isAuth?.accessToken ? handleWishlist : onOpen}
                   src={likeProduct ? liked : like}
                 />
                 <Modal isOpen={isOpen} onClose={onClose} isCentered>

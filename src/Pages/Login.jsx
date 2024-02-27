@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Heading,
   Img,
@@ -12,15 +11,35 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext, useState } from "react";
 import loginImg from "../assets/login.jpg";
 import loginBg from "../assets/loginBg.jpg";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Field, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContextProvider";
+import { validateUser } from "../services/Api";
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email:"", password:""});
+  const [err, setErr] = useState("")
+  const {setAuth} = useContext(AuthContext)
+
+  const handleLogin=async(e)=>{
+    e.preventDefault();
+    const config = {
+      "Content-type": "application/json"
+    }
+    try {
+      const response = await validateUser(formData, config)
+     setAuth(response.data)
+     navigate("/")
+    } catch (error) {
+      setErr(error.response?.data?.message)
+    }
+  }
   return (
     <Flex h="100vh">
       <Img src={loginImg} />
@@ -37,18 +56,11 @@ const Login = () => {
             Hi!
           </Heading>
           <Heading size="md">Login Using Email</Heading>
+          <Text fontSize={"1.5rem"} mt="2%" fontWeight={700} color="red">{err}</Text>
           <Box w="50%" m="5% auto">
-            <Formik
-              initialValues={{
-                email: "",
-                password: "",
-              }}
-              onSubmit={(values) => {
-                alert(JSON.stringify(values));
-              }}
-            >
-              {({ handleSubmit, errors, touched }) => (
-                <form onSubmit={handleSubmit}>
+            <Formik>
+              {() => (
+                <form onSubmit={handleLogin}>
                   <VStack spacing={4} align="flex-start">
                     <FormControl>
                       <FormLabel htmlFor="email" color="#908E8E">
@@ -60,11 +72,11 @@ const Login = () => {
                         name="email"
                         type="email"
                         variant="filled"
+                        value={formData.email}
+                        onChange={(e)=>setFormData({...formData, email: e.target.value})}
                       />
                     </FormControl>
-                    <FormControl
-                      isInvalid={!!errors.password && touched.password}
-                    >
+                    <FormControl>
                       <FormLabel htmlFor="password" color="#908E8E">
                         Password
                       </FormLabel>
@@ -74,18 +86,9 @@ const Login = () => {
                         name="password"
                         type="password"
                         variant="filled"
-                        validate={(value) => {
-                          let error;
-
-                          if (value.length < 6) {
-                            error =
-                              "Password must contain at least 6 characters";
-                          }
-
-                          return error;
-                        }}
+                        value = {formData.password}
+                        onChange={(e)=>setFormData({...formData, password:e.target.value})}
                       />
-                      <FormErrorMessage>{errors.password}</FormErrorMessage>
                     </FormControl>
                     <Button
                       type="submit"
