@@ -45,7 +45,7 @@ const SingleProduct = () => {
         });
           
       } else {
-        const response= await deleteWishedItems(id, config)
+        await deleteWishedItems(id, config)
         toast({
           position: "bottom-left",
           render: () => <CustomToast message="Removed from Wishlist" />,
