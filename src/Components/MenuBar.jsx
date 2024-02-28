@@ -1,9 +1,11 @@
 import { Box, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import MenuSection from "./MenuSection";
+import { useNavigate } from "react-router-dom";
 
 const MenuBar = ({ menuTitle, menuDetails }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate()
   return (
     <Box position="relative">
       <Box
@@ -23,6 +25,7 @@ const MenuBar = ({ menuTitle, menuDetails }) => {
         display="flex"
         alignItems="center"
         cursor="pointer"
+        onClick={()=>navigate("/products")}
       >
         {menuTitle}
       </Text>
