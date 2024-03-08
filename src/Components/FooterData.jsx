@@ -3,7 +3,7 @@ import React from "react";
 
 const FooterData = ({ mainTitle, mainDetail, detail }) => {
   return (
-    <Box>
+    <Box textAlign={{md:"left", base:"center"}}>
       <Heading mb="3%" fontSize="1.2rem" fontWeight="400">
         {mainTitle}
       </Heading>

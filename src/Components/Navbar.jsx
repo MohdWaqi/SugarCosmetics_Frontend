@@ -10,15 +10,15 @@ import {
   Text,
   Menu,
   MenuButton,
-  MenuOptionGroup,
   MenuList,
-  MenuDivider,
-  MenuItemOption,
-  useDisclosure,
-  Heading,
-  UnorderedList,
-  ListItem,
   MenuItem,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerBody,
+  InputLeftElement,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import logo from "../assets/10001.svg";
@@ -33,10 +33,15 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { logout } from "../services/Api";
+import bur from "../assets/burger.svg"
+import { MobileMenu } from "./MobileMenu";
+import mobileMenuData from "../assets/mobileMenu.json"
+import appLogo from "../assets/app.jpeg"
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuth, setAuth } = useContext(AuthContext);
+  const { isAuth, setAuth, isTablet } = useContext(AuthContext);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const handleLogout =async()=>{
     try {
       await logout()
@@ -48,15 +53,58 @@ const Navbar = () => {
   }
   return (
     <Box bg="black" position="fixed" w="100vw" zIndex={2}>
-      <Flex h="10vh" alignItems="center" mx="2%">
+      <Flex h={{md:"10vh", base:"7vh"}} alignItems="center" mx="2%" w={{md:"90vw", base:"85vw"}} justifyContent="space-between">
+        {isTablet&&<><Img 
+          mr="5%"
+          w="20px"
+          src={bur}
+          onClick={onOpen}
+        />
+         <Drawer
+        isOpen={isOpen}
+        placement='left'
+        size="full"
+        onClose={onClose}
+        
+      >
+        <DrawerOverlay />
+        <DrawerContent bg="black">
+
+          <DrawerCloseButton left="10px" top="20px" color="white" fontSize="1.2rem" />
+      
+          <Img
+          onClick={() => navigate("/")}
+          cursor="pointer"
+          w={{md:"22%", base:"12rem"}}
+          h={{md:"10vh", base:"7vh"}} 
+          src={logo}
+          ml="4rem"
+          mt="0.5rem"
+        />
+        <DrawerBody color="white" pb="0px" position="relative">
+        {mobileMenuData.map((dataDetails, index)=><MobileMenu key={index} menuTitle={dataDetails}/>)}
+        <Flex bg="gray"position="absolute" left="0" w="100%" p="1.5rem" justifyContent="space-around" gap="2rem" textAlign="center">
+          <Img src={appLogo}/>
+          <Box fontWeight="600" fontSize="1.2rem">
+            <Text>
+              GET THE NEW SUGAR APP TODAY!
+            </Text>
+            <Button w="100%" fontWeight="600">Install Now</Button>
+          </Box>
+        </Flex>
+        </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+      </>
+        }
         <Img
           onClick={() => navigate("/")}
           cursor="pointer"
-          w="22%"
-          h="10vh"
+          w={{md:"22%", base:"12rem"}}
+          h={{md:"10vh", base:"7vh"}} 
           src={logo}
         />
-        <InputGroup w="47%" mx="2%" _focus={{ outline: 0 }}>
+        {!isTablet&&<InputGroup w="47%" mx="2%" _focus={{ outline: 0 }}>
           <Input
             borderRadius="10px"
             type="text"
@@ -72,9 +120,9 @@ const Navbar = () => {
               Search
             </Button>
           </InputRightElement>
-        </InputGroup>
+        </InputGroup>}
         <Flex mx="5%" alignItems="center">
-          <Link
+          {!isTablet&&<Link
             display="flex"
             alignItems="center"
             onClick={() => {
@@ -85,7 +133,7 @@ const Navbar = () => {
             <Text color="white" minW="max-content">
               {isAuth?.accessToken ? "Hi, Sugar Fan" : "Login/Register"}
             </Text>
-          </Link>
+          </Link>}
 
           {isAuth?.accessToken && (
             <Menu>
@@ -116,10 +164,24 @@ const Navbar = () => {
           <Img w="20px" mx="12%" src={offerIcon} />
         </Flex>
       </Flex>
-      <Flex color="white" gap="3%" h="7vh" pl="2.8%" bg="#191919">
-        {menuData.map((menu, index) => (
+      <Flex color={!isTablet&&"white"} gap="3%" h="7vh" pl="2.8%" bg={isTablet?"lightgray":"#191919"}>
+        {!isTablet ?menuData.map((menu, index) => (
           <MenuBar key={index} menuTitle={menu.name} menuDetails={menu.data} />
-        ))}
+        )):<InputGroup  m="2%" _focus={{ outline: 0 }}>
+          <Input
+            borderRadius="10px"
+            type="text"
+            border="1px solid gray"
+            _hover={{}}
+            placeholder='Try "Liquid Lipstick"'
+            pl="20%"
+          />
+          <InputLeftElement w="17%" display="flex" alignItems="center">
+            
+              <Img w="15px" h="30px" mb="8%" mx="5%" src={searchIcon} />
+             
+          </InputLeftElement>
+        </InputGroup>}
       </Flex>
     </Box>
   );
