@@ -1,0 +1,28 @@
+  .swiper {
+
+    height: 100%;
+  width:100vw; 
+  }
+  .mySwiper{
+    background: #fff;
+    padding:10px 0;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 12px;
+    background: #fff;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:5rem !important;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 4rem;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  

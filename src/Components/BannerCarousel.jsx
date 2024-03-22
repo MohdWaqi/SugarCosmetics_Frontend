@@ -1,23 +1,25 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { Box, Image } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 const BannerCarousel = ({ imageList }) => {
+  const {isTablet} = useContext(AuthContext)
   return (
     <Carousel
       autoPlay={true}
       interval={4000}
       infiniteLoop
-      showArrows={true}
+      showArrows={false}
       showIndicators={true}
       showStatus={false}
       stopOnHover={true}
       dynamicHeight={true}
       renderArrowPrev={(clickHandler) => {
         return (
-          <div
+          !isTablet&&<div
             style={{
               position: "absolute",
               zIndex: "1",
@@ -41,7 +43,7 @@ const BannerCarousel = ({ imageList }) => {
       }}
       renderArrowNext={(clickHandler) => {
         return (
-          <div
+          !isTablet&&<div
             style={{
               position: "absolute",
               zIndex: "1",

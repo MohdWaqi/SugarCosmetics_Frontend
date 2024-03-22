@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import {
   Box,
@@ -23,10 +23,31 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductCarousel from "../Components/ProductCarousel";
 import Footer from "../Components/Footer";
 import { homePageData } from "../services/Api";
+import { AuthContext } from "../Context/AuthContextProvider";
+import CategoryCarousel from "../Components/CategoryCarousel";
+import cat1 from "../assets/cat1.png"
+import cat2 from "../assets/cat2.png"
+import cat3 from "../assets/cat3.png"
+import cat4 from "../assets/cat4.png"
+import cat5 from "../assets/cat5.png"
+import cat6 from "../assets/cat6.png"
+import cat7 from "../assets/cat7.png"
+import cat8 from "../assets/cat8.png"
+import cat9 from "../assets/cat9.png"
+import cat10 from "../assets/cat10.png"
+import mobCarousel1 from "../assets/10002.jpg"
+import mobCarousel2 from "../assets/10003.gif"
+import mobCarousel3 from "../assets/10004.gif"
+import mobCarousel4 from "../assets/10005.jpg"
+import mobCarousel5 from "../assets/10006.jpg"
+import mobCarousel6 from "../assets/10007.gif"
+import mobCarousel7 from "../assets/10008.jpg"
+import mobCarousel8 from "../assets/10010.jpg"
 
 
 const Home = () => {
   const [homeData, setHomeData] = useState({});
+  const {isTablet} = useContext(AuthContext)
   const getData = async() =>{
     try {
       const response = await homePageData()
@@ -41,18 +62,62 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Box bg="#F3F3F3" w="100vw" pt="17vh">
+      <Box bg="#F3F3F3" w="100vw" pt={{md:"17vh", base:"14vh"}}>
+        {isTablet&&<CategoryCarousel categoryData={
+          [
+            {
+              image: cat1,
+              name: "Hot Deals"
+            },
+            {
+              image: cat2,
+              name: "SUGAR Play"
+            },
+            {
+              image: cat3,
+              name: "Lips"
+            },
+            {
+              image: cat4,
+              name: "Face"
+            },
+            {
+              image: cat5,
+              name: "Eyes"
+            },
+            {
+              image: cat6,
+              name: "Gifting"
+            },
+            {
+              image: cat7,
+              name: "Value Sets"
+            },
+            {
+              image: cat8,
+              name: "Skincare"
+            },
+            {
+              image: cat9,
+              name: "Merch Station"
+            },
+            {
+              image: cat10,
+              name: "Celeb Picks"
+            },
+          ]
+        }/>}
         {homeData.bestSeller && (
           <BannerCarousel
             imageList={[
-              carouselImg1,
-              carouselImg2,
-              carouselImg3,
-              carouselImg4,
-              carouselImg5,
-              carouselImg6,
-              carouselImg7,
-              carouselImg8,
+              isTablet?mobCarousel1:carouselImg1,
+              isTablet?mobCarousel2:carouselImg2,
+              isTablet?mobCarousel3:carouselImg3,
+              isTablet?mobCarousel4:carouselImg4,
+              isTablet?mobCarousel5:carouselImg5,
+              isTablet?mobCarousel6:carouselImg6,
+              isTablet?mobCarousel7:carouselImg7,
+              isTablet?mobCarousel8:carouselImg8,
             ]}
           />
         )}
